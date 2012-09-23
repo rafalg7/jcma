@@ -1,15 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html
-        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xml:lang="en" lang="en">
-<h:head>
-    <title>About</title>
-    <link rel="stylesheet" href="style.css"/>
-</h:head>
-<h:body>
-    <h:link outcome="index" value="Index"/>
-    <h:link outcome="about" value="About" styleClass="active"/>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" template="/template.xhtml">
 
-    <h1>About us</h1>
-</h:body>
-</html>
+    <ui:param name="pageTitle" value="About us"/>
+    <ui:param name="activeTab" value="about"/>
+
+    <ui:define name="content">
+        <h1>About us</h1>
+    </ui:define>
+
+</ui:composition>
