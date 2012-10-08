@@ -5,7 +5,7 @@ import javax.faces.bean.ViewScoped;
 import java.io.Serializable;
 
 @ViewScoped
-@ManagedBean
+@ManagedBean(name="TheBean")
 public class Bean implements Serializable {
 // ------------------------------ FIELDS ------------------------------
 

@@ -3,9 +3,32 @@
 <h:body>
     Hello world
     <h:form>
-        <h:inputText id="txt" value="#{bean.text}"/>
-        <h:commandButton id="send" action="#{bean.echo}" value="echo"/>
-        <h:outputText id="response" value="#{bean.response}"/>
+        <h:inputText id="txt" value="#{TheBean.text}"/>
+        <h:commandButton id="send" action="#{TheBean.echo}" value="echo"/>
+        <h:outputText id="response" value="#{TheBean.response}"/>
+    </h:form>
+    
+    <h:form rendered="#{loginBean.loggedIn}">
+        <h:outputText value="#{loginBean.login}" rendered="#{loginBean.loggedIn}"/>
+        <h:commandButton action="#{loginBean.logOut}" value="Log out!"/>
+    </h:form>
+    
+    <h:form rendered="#{!loginBean.loggedIn}">
+        <h:panelGrid columns="3" cellpadding="5">
+            
+            
+            <h:outputText value="Login:"/>
+            <h:inputText id="loginfield" value="#{loginBean.login}"/>
+            <h:message for="loginfield"/>
+            
+            <h:outputText value="Password:"/>
+            <h:inputSecret id="passfield" value="#{loginBean.password}"/>
+            <h:message for="passfield"/>
+            
+            <h:outputText value="Action:"/>
+            <h:commandButton value="Zaloguj" action="#{loginBean.checkLogin}"/>
+            <h:messages globalOnly="true" showDetail="true"/>
+        </h:panelGrid>
     </h:form>
 </h:body>
 </html>
