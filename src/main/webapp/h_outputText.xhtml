@@ -1,0 +1,15 @@
+<!DOCTYPE composition
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="template.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html">
+    <ui:define name="content">
+        There are two outputTexts, one escapes (default behavior) it's value and the other one. Type &amp;h1>text&amp;/h1> into textarea and submit the form.
+        <h:form id="f">
+            <h:inputTextarea id="name" value="#{bean.name}"/>
+            <h:commandButton value="Update"/>
+            <h:outputText value="#{bean.name}"/>
+            <h:outputText value="#{bean.name}" escape="false"/>
+        </h:form>
+        <h:messages/>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,17 @@
+<!DOCTYPE composition
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="template.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html">
+    <ui:define name="content">
+        There are two outputScripts on this page used. See source of the page in your browser.
+        jsf.js should be rendered in head while jsf-uncompressed should be rendered inside body.
+        <h:outputScript library="javax.faces" name="jsf.js" target="head"/>
+        <h:outputScript library="javax.faces" name="jsf-uncompressed.js"/>
+        Two scripts are loaded from jars available on class path. Third script is an inline script.
+        <h:outputScript>
+            var h1=document.createElement("h1");
+            h1.innerHTML="I'm generated with JavaScript";
+            document.body.appendChild(h1);
+        </h:outputScript>
+    </ui:define>
+</ui:composition>

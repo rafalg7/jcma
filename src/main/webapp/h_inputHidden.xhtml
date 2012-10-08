@@ -1,0 +1,14 @@
+<!DOCTYPE composition
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="template.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html">
+    <ui:define name="content">
+        <h:form id="f">
+            <h:inputHidden id="name" value="#{bean.name}"/>
+            <input type="button" value="I'm John" onclick="document.getElementById('f:name').value='John'"/>
+            <input type="button" value="I'm Tom" onclick="document.getElementById('f:name').value='Tom'"/>
+            <h:commandButton value="Say Hi" action="#{bean.sayHi}"/>
+        </h:form>
+        <h:messages/>
+    </ui:define>
+</ui:composition>
