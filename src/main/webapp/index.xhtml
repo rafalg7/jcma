@@ -2,5 +2,10 @@
 <h:head/>
 <h:body>
     Hello world
+    <h:form>
+        <h:inputText id="txt" value="#{bean.text}"/>
+        <h:commandButton id="send" action="#{bean.echo}" value="echo"/>
+        <h:outputText id="response" value="#{bean.response}"/>
+    </h:form>
 </h:body>
 </html>
