@@ -16,10 +16,10 @@
                     <rich:message id="emailMessage" for="email" ajaxRendered="false"/>
 
                     <h:outputLabel value="birth date (yyyy-MM-dd)" for="birthDate"/>
-                    <h:inputText id="birthDate" value="#{registrationView.user.birthDate}">
+                    <rich:calendar id="birthDate" value="#{registrationView.user.birthDate}" enableManualInput="true" datePattern="yyyy-MM-dd">
                         <f:convertDateTime pattern="yyyy-MM-dd"/>
                         <a4j:ajax render="birthDateMessage"/>
-                    </h:inputText>
+                    </rich:calendar>
                     <rich:message id="birthDateMessage" for="birthDate" ajaxRendered="false"/>
 
                     <h:outputLabel value="lucky number (1-9)" for="luckyNumber"/>
