@@ -62,20 +62,22 @@ public class FilterTableBacking {
             if(users.get(i).getLogin().contains(filterLogin)){
                 result.add(users.get(i));
             }
-        }
-        
+        }  
         this.users = result;
     }
     
     public void filterByPasswordListener(){
-        if(filterPassword.length()==0) users=userRepository.getUsers(0, numberOfResults);
+        if(filterPassword.length()==0) {
+            users=userRepository.getUsers(0, numberOfResults);
+            return;
+        }
         
         Logger.getLogger("filterTable").log(Level.INFO, "Filtering:"+this.filterPassword);
         List<AppUser> result = new ArrayList<AppUser>();
         this.users = userRepository.getUsers(0, numberOfResults);
         
         for(int i=0; i<users.size(); i++){
-            if(users.get(i).getPassword().contains(filterfirstName)){
+            if(users.get(i).getPassword().contains(filterPassword)){
                 result.add(users.get(i));
             }
         }
@@ -84,14 +86,17 @@ public class FilterTableBacking {
     }
     
     public void filterByFirstNameListener(){
-        if(filterfirstName.length()==0) users=userRepository.getUsers(0, numberOfResults);
+        if(filterfirstName.length()==0) {
+            users=userRepository.getUsers(0, numberOfResults);
+            return;
+        }
         
         Logger.getLogger("filterTable").log(Level.INFO, "Filtering:"+this.filterfirstName);
         List<AppUser> result = new ArrayList<AppUser>();
         this.users = userRepository.getUsers(0, numberOfResults);
         
         for(int i=0; i<users.size(); i++){
-            if(users.get(i).getLogin().contains(filterPassword)){
+            if(users.get(i).getFirstName().contains(filterfirstName)){
                 result.add(users.get(i));
             }
         }
@@ -155,7 +160,7 @@ public class FilterTableBacking {
         this.users = userRepository.getUsers(0, numberOfResults);
         
         for(int i=0; i<users.size(); i++){
-            if(users.get(i).getEmail().contains(filterbirthDate)){
+            if(users.get(i).getBirthDate().toString().contains(filterbirthDate)){
                 result.add(users.get(i));
             }
         }

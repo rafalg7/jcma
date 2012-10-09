@@ -28,6 +28,24 @@ public class AppUserRepository {
     public AppUserRepository() {
         users=new ArrayList<AppUser>();
     }
+    
+    public boolean checkUser(String login, String password){
+        for(AppUser a : users){
+            if(a.getLogin().equals(login) && a.getPassword().equals(password)){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public AppUser getUser(String login){
+        for(AppUser a : users){
+            if(a.getLogin().equals(login)){
+                return a;
+            }
+        }
+        return null;
+    }
 
     public List<AppUser> getAllUsers() {
         

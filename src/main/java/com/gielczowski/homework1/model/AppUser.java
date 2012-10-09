@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author rafal
  */
-public class AppUser implements Serializable{
+public class AppUser{
     
     private String login;
     private String password;
