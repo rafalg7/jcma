@@ -34,6 +34,19 @@ public class PostDAO {
 
 // -------------------------- OTHER METHODS --------------------------
 
+    public Post getPostById(Long id)
+    {
+        if (id == null) {
+            return null;
+        }
+        for (Post post : posts) {
+            if (id.equals(post.getId())) {
+                return post;
+            }
+        }
+        return null;
+    }
+
     public void save(Post post)
     {
         posts.add(post);

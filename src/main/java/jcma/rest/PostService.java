@@ -8,6 +8,7 @@ import org.jboss.resteasy.annotations.providers.jaxb.Wrapped;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import java.util.List;
@@ -29,6 +30,14 @@ public class PostService {
         final Post post = new Post(getCurrentUser(), content, title);
         postDAO.save(post);
         return post;
+    }
+
+    @Produces({"application/json", "application/xml"})
+    @GET
+    @Path("/{id}")
+    public Post getPost(@PathParam("id") Long id)
+    {
+        return postDAO.getPostById(id);
     }
 
     @Produces({"application/json", "application/json-in-script"})
