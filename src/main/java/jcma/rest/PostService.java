@@ -5,6 +5,7 @@ import jcma.domain.User;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,6 +25,7 @@ public class PostService {
 
 // --------------------- GETTER / SETTER METHODS ---------------------
 
+    @Produces("application/json")
     @GET
     @Path("/list")
     public List<Post> getPosts()
