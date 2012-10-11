@@ -18,7 +18,7 @@ public class PostDAO {
 
     public Post getPostById(Long id)
     {
-        return entityManager.find(Post.class, id);
+        return (Post) entityManager.createQuery("select p from Post p where p.id=:id").setParameter("id", id).getSingleResult();
     }
 
     @SuppressWarnings("unchecked")
