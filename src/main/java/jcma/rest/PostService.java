@@ -2,6 +2,7 @@ package jcma.rest;
 
 import jcma.domain.Post;
 import jcma.domain.User;
+import org.jboss.resteasy.annotations.providers.jaxb.Wrapped;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -35,6 +36,7 @@ public class PostService {
 
 // -------------------------- OTHER METHODS --------------------------
 
+    @Wrapped(element = "posts")
     @Produces("application/xml")
     @GET
     @Path("/list")
