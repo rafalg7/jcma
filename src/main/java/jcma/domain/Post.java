@@ -1,11 +1,15 @@
 package jcma.domain;
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlRootElement;
 
+@Indexed
 @XmlRootElement
 @Entity
 public class Post {
@@ -14,12 +18,14 @@ public class Post {
     @ManyToOne
     private User author;
 
+    @Field
     private String content;
 
     @Id
     @GeneratedValue
     private Long id;
 
+    @Field
     private String title;
 
 // --------------------------- CONSTRUCTORS ---------------------------

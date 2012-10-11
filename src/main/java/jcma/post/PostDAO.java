@@ -1,6 +1,9 @@
 package jcma.post;
 
 import jcma.domain.Post;
+import org.apache.lucene.search.Query;
+import org.hibernate.search.jpa.FullTextEntityManager;
+import org.hibernate.search.jpa.Search;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -35,5 +38,19 @@ public class PostDAO {
     public void save(Post post)
     {
         entityManager.merge(post);
+    }
+
+    public List<Post> search(String query)
+    {
+        final FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
+        final Query fullTextQuery = fullTextEntityManager.getSearchFactory()
+            .buildQueryBuilder()
+            .forEntity(Post.class)
+            .get()
+            .phrase()
+            .onField("content")
+            .sentence(query)
+            .createQuery();
+        return fullTextEntityManager.createFullTextQuery(fullTextQuery, Post.class).getResultList();
     }
 }

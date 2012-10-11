@@ -53,6 +53,14 @@ public class PostService {
         return postDAO.getPosts();
     }
 
+    @Produces({"application/json", "application/xml"})
+    @GET
+    @Path("/search")
+    public List<Post> searchPosts(@QueryParam("query") String query)
+    {
+        return postDAO.search(query);
+    }
+
     @Wrapped(element = "posts")
     @Produces("application/xml")
     @GET
