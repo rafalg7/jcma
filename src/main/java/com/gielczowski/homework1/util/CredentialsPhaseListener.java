@@ -38,7 +38,7 @@ public class CredentialsPhaseListener implements PhaseListener {
             LOGGER.log(Level.INFO, "Logged user:" + loginBean.getLogin());
 
             //if logged user isn't "admin"
-            if (loginBean.isLoggedIn() && !"admin".equals(loginBean.getLogin())) {
+            if (!loginBean.isLoggedIn() || !"admin".equals(loginBean.getLogin())) {
 
                 HttpServletResponse response = (HttpServletResponse) ctx.getExternalContext().getResponse();
                 try {
