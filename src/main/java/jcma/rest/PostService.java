@@ -32,4 +32,14 @@ public class PostService {
     {
         return posts;
     }
+
+// -------------------------- OTHER METHODS --------------------------
+
+    @Produces("application/xml")
+    @GET
+    @Path("/list")
+    public List<Post> getPostsAsXML()
+    {
+        return posts;
+    }
 }

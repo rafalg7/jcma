@@ -1,5 +1,8 @@
 package jcma.domain;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Post {
 // ------------------------------ FIELDS ------------------------------
 
