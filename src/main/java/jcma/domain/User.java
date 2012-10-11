@@ -1,11 +1,21 @@
 package jcma.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+
 public class User {
 // ------------------------------ FIELDS ------------------------------
 
     private String email;
 
     private String firstname;
+
+    @Id
+    @GeneratedValue
+    private Long id;
 
     private String lastname;
 
@@ -43,6 +53,16 @@ public class User {
     public void setFirstname(String firstname)
     {
         this.firstname = firstname;
+    }
+
+    public Long getId()
+    {
+        return id;
+    }
+
+    public void setId(Long id)
+    {
+        this.id = id;
     }
 
     public String getLastname()

@@ -1,15 +1,23 @@
 package jcma.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
+@Entity
 public class Post {
 // ------------------------------ FIELDS ------------------------------
 
+    @ManyToOne
     private User author;
 
     private String content;
 
+    @Id
+    @GeneratedValue
     private Long id;
 
     private String title;

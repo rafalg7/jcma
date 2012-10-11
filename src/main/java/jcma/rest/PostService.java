@@ -3,6 +3,7 @@ package jcma.rest;
 import jcma.domain.Post;
 import jcma.domain.User;
 import jcma.post.PostDAO;
+import jcma.user.UserDao;
 import org.jboss.resteasy.annotations.providers.jaxb.Wrapped;
 
 import javax.inject.Inject;
@@ -20,6 +21,9 @@ public class PostService {
 
     @Inject
     private PostDAO postDAO;
+
+    @Inject
+    private UserDao userDao;
 
 // -------------------------- OTHER METHODS --------------------------
 
@@ -67,9 +71,6 @@ public class PostService {
 
     private User getCurrentUser()
     {
-        /**
-         * This method should somehow get currently logged in user.
-         */
-        return new User("john@doe.com", "John", "Doe");
+        return userDao.getUsers().get(0);
     }
 }
