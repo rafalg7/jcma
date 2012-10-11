@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Blog</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+</head>
+<body>
+<div id="posts"></div>
+<script type="text/javascript">
+    function loadPosts(data)
+    {
+        var posts = jQuery("#posts");
+        for (var i = 0; i < data.length; i++) {
+            var post = jQuery("<div class='post'></div>");
+            post.append("<h1>" + data[i].title + "</h1>");
+            post.append("<div>" + data[i].content + "</div>");
+            posts.append(post);
+        }
+    }
+</script>
+<script type="text/javascript" src="api/post/list?responseType=application/json-in-script&methodName=loadPosts"></script>
+</body>
+</html>

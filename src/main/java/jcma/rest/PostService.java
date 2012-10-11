@@ -26,7 +26,7 @@ public class PostService {
 
 // --------------------- GETTER / SETTER METHODS ---------------------
 
-    @Produces("application/json")
+    @Produces({"application/json", "application/json-in-script"})
     @GET
     @Path("/list")
     public List<Post> getPosts()

@@ -8,6 +8,7 @@
             <module name="javax.activation.api"/>
             <module name="javax.mail.api"/>
             <module name="asm.asm"/>
+            <module name="org.codehaus.jackson.jackson-jaxrs"/>
             <module name="org.apache.james.mime4j"/>
             <module name="org.apache.xerces"/>
             <module name="org.apache.xalan"/>
