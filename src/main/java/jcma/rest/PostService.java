@@ -5,6 +5,7 @@ import jcma.domain.User;
 import jcma.post.PostDAO;
 import jcma.user.UserDao;
 import org.jboss.resteasy.annotations.providers.jaxb.Wrapped;
+import org.jboss.resteasy.spi.NotFoundException;
 
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
@@ -42,7 +43,11 @@ public class PostService {
     @Path("/{id}")
     public Post getPost(@PathParam("id") Long id)
     {
-        return postDAO.getPostById(id);
+        final Post post = postDAO.getPostById(id);
+        if (post == null) {
+            throw new NotFoundException("No post with given id exists: " + id);
+        }
+        return post;
     }
 
     @Produces({"application/json", "application/json-in-script"})
