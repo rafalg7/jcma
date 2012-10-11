@@ -6,6 +6,7 @@ import jcma.domain.User;
 import javax.enterprise.context.ApplicationScoped;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 @ApplicationScoped
@@ -45,6 +46,21 @@ public class PostDAO {
             }
         }
         return null;
+    }
+
+    public boolean removePostById(Long id)
+    {
+        if (id == null) {
+            return false;
+        }
+        for (Iterator<Post> iterator = posts.iterator(); iterator.hasNext(); ) {
+            Post post = iterator.next();
+            if (id.equals(post.getId())) {
+                iterator.remove();
+                return true;
+            }
+        }
+        return false;
     }
 
     public void save(Post post)

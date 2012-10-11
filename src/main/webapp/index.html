@@ -21,6 +21,10 @@
     <input type="button" id="add" value="Add"/>
 </form>
 <script type="text/javascript">
+    function removePost(id)
+    {
+        jQuery.ajax("api/post/" + id, {complete:reloadPosts, type:"DELETE"});
+    }
     function loadPosts(data)
     {
         var posts = jQuery("#posts");
@@ -29,6 +33,7 @@
             var post = jQuery("<div class='post'></div>");
             post.append("<h1>" + data[i].title + "</h1>");
             post.append("<div>" + data[i].content + "</div>");
+            post.append("<a href='#' onclick='removePost(" + data[i].id + ")'>Remove</a>");
             posts.append(post);
         }
     }

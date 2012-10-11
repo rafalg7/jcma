@@ -6,6 +6,7 @@ import jcma.post.PostDAO;
 import org.jboss.resteasy.annotations.providers.jaxb.Wrapped;
 
 import javax.inject.Inject;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -55,6 +56,13 @@ public class PostService {
     public List<Post> getPostsAsXML()
     {
         return postDAO.getPosts();
+    }
+
+    @DELETE
+    @Path("/{id}")
+    public boolean removePost(@PathParam("id") Long id)
+    {
+        return postDAO.removePostById(id);
     }
 
     private User getCurrentUser()
