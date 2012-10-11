@@ -2,39 +2,42 @@ package jcma.rest;
 
 import jcma.domain.Post;
 import jcma.domain.User;
+import jcma.post.PostDAO;
 import org.jboss.resteasy.annotations.providers.jaxb.Wrapped;
 
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import java.util.Arrays;
+import javax.ws.rs.QueryParam;
 import java.util.List;
 
 @Path("/post")
 public class PostService {
 // ------------------------------ FIELDS ------------------------------
 
-    private List<Post> posts;
+    @Inject
+    private PostDAO postDAO;
 
-// --------------------------- CONSTRUCTORS ---------------------------
+// -------------------------- OTHER METHODS --------------------------
 
-    public PostService()
+    @Produces({"application/json", "application/xml"})
+    @GET
+    @Path("/add")
+    public Post addPost(@QueryParam("title") String title, @QueryParam("content") String content)
     {
-        final User author = new User("john@doe.com", "John", "Doe");
-        posts = Arrays.asList(new Post(author, "Content #1", "First post"), new Post(author, "Content #2", "Second post"));
+        final Post post = new Post(getCurrentUser(), content, title);
+        postDAO.save(post);
+        return post;
     }
-
-// --------------------- GETTER / SETTER METHODS ---------------------
 
     @Produces({"application/json", "application/json-in-script"})
     @GET
     @Path("/list")
     public List<Post> getPosts()
     {
-        return posts;
+        return postDAO.getPosts();
     }
-
-// -------------------------- OTHER METHODS --------------------------
 
     @Wrapped(element = "posts")
     @Produces("application/xml")
@@ -42,6 +45,14 @@ public class PostService {
     @Path("/list")
     public List<Post> getPostsAsXML()
     {
-        return posts;
+        return postDAO.getPosts();
+    }
+
+    private User getCurrentUser()
+    {
+        /**
+         * This method should somehow get currently logged in user.
+         */
+        return new User("john@doe.com", "John", "Doe");
     }
 }

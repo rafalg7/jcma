@@ -8,10 +8,23 @@
 </head>
 <body>
 <div id="posts"></div>
+<hr/>
+<form id="addPost">
+    <label for="title">Title</label>
+    <br/>
+    <input type="text" name="title" id="title"/>
+    <br/>
+    <label for="content">Content</label>
+    <br/>
+    <textarea name="content" id="content"></textarea>
+    <br/>
+    <input type="button" id="add" value="Add"/>
+</form>
 <script type="text/javascript">
     function loadPosts(data)
     {
         var posts = jQuery("#posts");
+        posts.empty();
         for (var i = 0; i < data.length; i++) {
             var post = jQuery("<div class='post'></div>");
             post.append("<h1>" + data[i].title + "</h1>");
@@ -19,6 +32,25 @@
             posts.append(post);
         }
     }
+    function reloadPosts()
+    {
+        jQuery.ajax("api/post/list?responseType=application/json-in-script&methodName=loadPosts", {complete:function (xhr, status)
+        {
+            if (status != "error") {
+                eval(xhr.responseText);
+            }
+        }});
+    }//    Setup
+    jQuery(function ()
+    {
+        var form = jQuery("form#addPost");
+        jQuery("#add", form).click(function ()
+        {
+            var title = jQuery("#title", form).val();
+            var content = jQuery("#content", form).val();
+            jQuery.ajax("api/post/add", {complete:reloadPosts, data:{title:title, content:content}});
+        });
+    });
 </script>
 <script type="text/javascript" src="api/post/list?responseType=application/json-in-script&methodName=loadPosts"></script>
 </body>

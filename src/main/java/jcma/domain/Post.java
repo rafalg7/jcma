@@ -10,6 +10,8 @@ public class Post {
 
     private String content;
 
+    private Long id;
+
     private String title;
 
 // --------------------------- CONSTRUCTORS ---------------------------
@@ -45,6 +47,16 @@ public class Post {
     public void setContent(String content)
     {
         this.content = content;
+    }
+
+    public Long getId()
+    {
+        return id;
+    }
+
+    public void setId(Long id)
+    {
+        this.id = id;
     }
 
     public String getTitle()
