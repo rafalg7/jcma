@@ -6,6 +6,7 @@ package com.gielczowski.homework1.view;
 
 import com.gielczowski.homework1.model.AppUser;
 import com.gielczowski.homework1.util.AppUserRepository;
+import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -19,7 +20,7 @@ import javax.faces.context.FacesContext;
 
 @ManagedBean
 @SessionScoped
-public class LoginBean {
+public class LoginBean implements Serializable{
     
     private AppUser loggedUser;
     

@@ -22,6 +22,8 @@ Everybody, look! This text will not be included!
     
     <h:outputText id="greeting" value="Hello #{loginBean.loggedUser.firstName} !"
                   rendered="#{loginBean.loggedIn}"/>
+    <br/>
+    <h:link value="Try restricted page to test PhaseListener" outcome="admin"/>
     
     <h:form rendered="#{loginBean.loggedIn}">
         <h:commandButton value="Log out!" action="#{loginBean.logOut()}"/>

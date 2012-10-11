@@ -6,11 +6,13 @@ package com.gielczowski.homework1.util;
 
 import com.gielczowski.homework1.model.AppUser;
 import com.gielczowski.homework1.model.GenderEnum;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -20,8 +22,8 @@ import javax.faces.bean.SessionScoped;
  * Pseudo DAO class with AppUsers
  */
 @ManagedBean
-@SessionScoped
-public class AppUserRepository {
+@ApplicationScoped
+public class AppUserRepository implements Serializable{
 
     List<AppUser> users;
 
@@ -55,6 +57,11 @@ public class AppUserRepository {
         if (users.isEmpty()) {
             AppUser user = new AppUser("smith", "password", "Adam", "Smith",
                     "Lorem ipsum lol", "smith@smith.com", GenderEnum.MAN,
+                    Calendar.getInstance().getTime(), true, new ArrayList<String>());
+            this.users.add(user);
+            
+            user = new AppUser("admin", "admin", "Admin", "Admin",
+                    "Lorem ipsum lol", "admin@smith.com", GenderEnum.MAN,
                     Calendar.getInstance().getTime(), true, new ArrayList<String>());
             this.users.add(user);
             
